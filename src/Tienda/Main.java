@@ -4,51 +4,46 @@ package Tienda;
 public class Main {
     public static void main(String[] args) {
 
-        Cliente lola=new Cliente("lola",new int[] {200,400,300,200});
-        Cliente pepe =new Cliente("pepe",new int[]{200,200,500,200,300});
-        Cliente manolo =new Cliente("manolo",new int[]{100,200,500});
-
+        Cliente lola=new Cliente("Lola",new int[] {200,400,300,200});
+        Cliente pepe =new Cliente("Pepe",new int[]{200,200,500,200,300});
+        Cliente manolo =new Cliente("Manolo",new int[]{100,200,500});
+        Cliente antonio =new Cliente("Antonio",new int[]{100,200,500});
+        Cliente pedro =new Cliente("Pedro",new int[]{100,200,500});
+        Cliente luisa =new Cliente("Luisa",new int[]{100,200,500});
         Dependiente de1=new Dependiente("MARTA",1);
         Dependiente de2=new Dependiente("LORENA",2);
-
+        Dependiente de3=new Dependiente("MARIA",3);
+        
+       
+        Lineadecaja lineadecaja = new Lineadecaja();
+        
+        lineadecaja.agregarDependiente(de1);
+        
+        lineadecaja.agregarDependiente(de2);
+        lineadecaja.agregarDependiente(de3);
+        
           long tiempoInicio= System.currentTimeMillis();
           
-          // Creamos los hilos 
-          Thread hilo1 = new Thread(de1);
-          Thread hilo2 = new Thread(de2);
+          
+        lineadecaja.nuevoCliente(manolo, tiempoInicio);  
+        lineadecaja.nuevoCliente(lola, tiempoInicio);  
+        lineadecaja.nuevoCliente(pepe, tiempoInicio);
+        lineadecaja.nuevoCliente(luisa, tiempoInicio);
+        lineadecaja.nuevoCliente(pedro, tiempoInicio);
+        lineadecaja.nuevoCliente(antonio, tiempoInicio);
+        
+        while (lineadecaja.getClientes()>0) {
+        	
+        
+  			  System.out.println("\n");
+  			  System.out.println(" Hay "+ lineadecaja.getClientes()+" clientes en la cola");
+  			  System.out.println("\n");
+  			  
+  			  }	
+        	
+        
 
-
-          de1.setCliente_tiempo(lola,tiempoInicio);
-          de2.setCliente_tiempo(pepe,tiempoInicio);
-        
-          
-         hilo1.start();
-         hilo2.start();
-          try  {
-        	  if (hilo1.isInterrupted()) {
-        		  System.out.println(" el hilo1 está interrimpido");	   
-        		  
-        	  }
-        	  
-        	  hilo1.join();
-        	    
-         de1.setCliente_tiempo(manolo,tiempoInicio);
-         hilo1 = new Thread(de1);	
-         hilo1.start();
-           
-    } catch (InterruptedException e) {
-        e.printStackTrace();
-    }
-          
         
         
-          // Comprobamos si los hilos fueron finalizaron
-          try {
-        	  hilo1.join();
-        	  hilo2.join();
-          } catch (InterruptedException e) {
-              e.printStackTrace();
-          }
-          
     }
 }

@@ -2,8 +2,8 @@ package Tienda;
 
 public class Cliente {
 
-    public   int[] compra;
-    public   String nombre;
+    private   int[] compra;
+    private   String nombre;
 
     public Cliente(String nombre, int[] compra) {
         this.nombre=nombre;
@@ -12,6 +12,11 @@ public class Cliente {
 
     public  int[] getCompra(){
         return compra;
+    }
+    
+    public String getNombre() {
+    	
+    	return this.nombre;
     }
 
     public void setCompra(int [] compra){
