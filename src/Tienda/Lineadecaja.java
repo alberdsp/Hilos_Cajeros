@@ -12,8 +12,8 @@ public class Lineadecaja {
 	private List<Dependiente> dependientes = new ArrayList<>();
 	private List<Cliente> clientes = new ArrayList<>();
 	// manejaremos los hilos con treemap por asignar mejor el indice en el que están
-	// este será el numero de caja serviria para futuras implementaciones también
-	private TreeMap<Integer, Thread> hilos = new TreeMap<Integer, Thread>();
+	
+
 
 	public Lineadecaja() {
 
@@ -52,8 +52,6 @@ public class Lineadecaja {
 					d.setCliente_tiempo(cliente, tiempo);
 					d.setLibre(false);
 					Thread hilo = new Thread(d);
-					hilos.put(d.getNcaja(), hilo);
-
 					hilo.start();
 
 					clientes.remove(index);
